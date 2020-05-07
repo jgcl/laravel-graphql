@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+        "rebing/graphql-laravel": "^5.1",
         "swooletw/laravel-swoole": "^2.6"
     },
     "require-dev": {
