@@ -1,0 +1,46 @@
+version: '3.2'
+
+services:
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      - TZ=America/Sao_Paulo
+      - MYSQL_ROOT_PASSWORD=1234567890
+      - MYSQL_DATABASE=funcional
+      - MYSQL_USER=funcional
+      - MYSQL_PASSWORD=123456
+    ports:
+      - 3306:3306
+    network_mode: "bridge"
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+      - mysql:db
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - 81:80
+    network_mode: "bridge"
+
+  api:
+    container_name: api
+    image: jgcl88/test-funcional
+    environment:
+      - TZ=America/Sao_Paulo
+    links:
+      - vilaemporio-mysql:db
+    volumes:
+      - ./app:/app
+    ports:
+      - 80:80
+    network_mode: "bridge"
+
+volumes:
+  mysql:
+    driver: "local"
