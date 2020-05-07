@@ -11,7 +11,7 @@ return [
     */
     'server' => [
         'host' => env('SWOOLE_HTTP_HOST', '127.0.0.1'),
-        'port' => env('SWOOLE_HTTP_PORT', '1215'),
+        'port' => env('SWOOLE_HTTP_PORT', '8080'),
         'public_path' => base_path('public'),
         // Determine if to use swoole to respond request for static files
         'handle_static_files' => env('SWOOLE_HANDLE_STATIC', true),
