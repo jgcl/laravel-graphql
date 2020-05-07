@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function (Request $request) {
-    return ["success" => true];
-});
+
+Route::get('/movements', 'MovementController@processRequest');
+Route::post('/movements', 'MovementController@processRequest');

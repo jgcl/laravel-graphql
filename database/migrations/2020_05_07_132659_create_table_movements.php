@@ -16,7 +16,7 @@ class CreateTableMovements extends Migration
         Schema::create('movements', function (Blueprint $table) {
             $table->id();
             $table->integer("account")->index();
-            $table->float("value");
+            $table->float("amount");
             $table->float("balance");
             $table->timestamp('created_at')->useCurrent();
         });

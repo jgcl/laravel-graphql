@@ -17,6 +17,13 @@ services:
       - 3306:3306
     network_mode: "bridge"
 
+  redis:
+    container_name: redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    network_mode: "bridge"
+
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin:latest
@@ -35,6 +42,7 @@ services:
       - TZ=America/Sao_Paulo
     links:
       - mysql:db
+      - redis:redis
     volumes:
       - ./app:/app
     ports:
