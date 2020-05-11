@@ -22,7 +22,7 @@ class MovementService
             $lastMovement = $this->movementRepository->getLastMovement($account);
 
             if($amount > $lastMovement->balance) {
-                throw new \Exception("Saldo insificiente");
+                throw ValidationException::withMessages(['balance' => 'Saldo insuficiente']);
             }
 
             $requestMovement = new Movement();
