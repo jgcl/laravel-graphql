@@ -18,7 +18,7 @@ class MovementRepository
         return $movement;
     }
 
-    public function getLastMovement(int $account): ? Movement
+    public function getLastMovement(int $account): ?Movement
     {
         return Movement::query()
             ->where('account', '=', $account)

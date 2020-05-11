@@ -21,7 +21,7 @@ class Movement extends Model
     /**
      *
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
 
     /**
      * The attributes that are mass assignable.
