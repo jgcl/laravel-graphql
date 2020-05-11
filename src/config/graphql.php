@@ -1,12 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-use example\Mutation\ExampleMutation;
-use example\Query\ExampleQuery;
-use example\Type\ExampleRelationType;
-use example\Type\ExampleType;
-
 return [
 
     // The prefix for routes
@@ -48,11 +41,6 @@ return [
     'middleware' => [],
 
     // Additional route group attributes
-    //
-    // Example:
-    //
-    // 'route_group_attributes' => ['guard' => 'api']
-    //
     'route_group_attributes' => [],
 
     // The name of the default schema used when no argument is provided
@@ -62,49 +50,14 @@ return [
 
     // The schemas for query and/or mutation. It expects an array of schemas to provide
     // both the 'query' fields and the 'mutation' fields.
-    //
-    // You can also provide a middleware that will only apply to the given schema
-    //
-    // Example:
-    //
-    //  'schema' => 'default',
-    //
-    //  'schemas' => [
-    //      'default' => [
-    //          'query' => [
-    //              'users' => 'App\GraphQL\Query\UsersQuery'
-    //          ],
-    //          'mutation' => [
-    //
-    //          ]
-    //      ],
-    //      'user' => [
-    //          'query' => [
-    //              'profile' => 'App\GraphQL\Query\ProfileQuery'
-    //          ],
-    //          'mutation' => [
-    //
-    //          ],
-    //          'middleware' => ['auth'],
-    //      ],
-    //      'user/me' => [
-    //          'query' => [
-    //              'profile' => 'App\GraphQL\Query\MyProfileQuery'
-    //          ],
-    //          'mutation' => [
-    //
-    //          ],
-    //          'middleware' => ['auth'],
-    //      ],
-    //  ]
-    //
     'schemas' => [
         'default' => [
             'query' => [
-                // 'example_query' => ExampleQuery::class,
+                'saldo' => \App\GraphQL\Queries\BalanceQuery::class,
             ],
             'mutation' => [
-                // 'example_mutation'  => ExampleMutation::class,
+                'depositar'  => \App\GraphQL\Mutations\DepositMutation::class,
+                'sacar'  => \App\GraphQL\Mutations\WithdrawMutation::class,
             ],
             'middleware' => [],
             'method' => ['get', 'post'],
@@ -113,17 +66,8 @@ return [
 
     // The types available in the application. You can then access it from the
     // facade like this: GraphQL::type('user')
-    //
-    // Example:
-    //
-    // 'types' => [
-    //     'user' => 'App\GraphQL\Type\UserType'
-    // ]
-    //
     'types' => [
-        // 'example'           => ExampleType::class,
-        // 'relation_example'  => ExampleRelationType::class,
-        // \Rebing\GraphQL\Support\UploadType::class,
+        'movement' => \App\GraphQL\Types\MovementType::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request
