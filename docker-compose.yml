@@ -38,6 +38,10 @@ services:
   api:
     container_name: api
     image: jgcl88/test-funcional
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: "php artisan"
     environment:
       - TZ=America/Sao_Paulo
     links:
@@ -46,7 +50,7 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - 80:80
+      - 80:8080
     network_mode: "bridge"
 
 volumes:

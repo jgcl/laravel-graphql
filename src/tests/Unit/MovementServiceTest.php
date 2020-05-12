@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use App\Movement;
-use App\Repositories\MovementRepository;
 use App\Services\MovementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -13,7 +12,6 @@ class MovementServiceTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    protected $movementRepository;
     protected $movementService;
     protected $movement;
 
@@ -21,7 +19,6 @@ class MovementServiceTest extends TestCase
     {
         parent::setUp();
 
-        $this->movementRepository = new MovementRepository();
         $this->movementService = new MovementService();
 
         $this->movement = new Movement([
