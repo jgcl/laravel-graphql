@@ -14,6 +14,7 @@ Plugins:
 ## Deploy com docker
 
 ```bash
+docker-compose pull
 docker-compose up -d
 docker exec -it app php artisan migrate
 ```
