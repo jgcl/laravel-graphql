@@ -4,5 +4,6 @@
 README.md
 docker-compose.yml
 Dockerfile
+src/public/codecoverage/*
 
 

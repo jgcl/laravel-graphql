@@ -1,22 +1,28 @@
-FROM php:7.4.5-cli
+FROM php:7.4.5-cli-alpine
 
+RUN docker-php-ext-install bcmath mysqli pdo_mysql
 
-
-#RUN apk add --no-cache ${PHPIZE_DEPS} \
-    #&& docker-php-ext-install opcache \
-    #&& pecl install swoole
-    #&& docker-php-ext-enable swoole \
-    #&& apk del ${PHPIZE_DEPS}
-
-#RUN echo 'extension=swoole.so' > /usr/local/etc/php/conf.d/docker-php-ext-swoole.ini
-
-COPY ./src /app
-
-#RUN chmod +x ./composer.phar && ./composer.phar install --no-dev --no-suggest \
-    #&& echo 'APP_KEY=base64:+F7E108ptxPVoIjIz2a2+kgQcHapBeGiG2fcXGJ4W4A=' > .env \
-    #&& php artisan optimize
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
+	&& pecl install redis xdebug \
+	&& docker-php-ext-enable redis \
+	&& docker-php-ext-enable xdebug \
+    && apk del -f .build-deps
 
 WORKDIR /app
 
-CMD "php /app/artisan serve"
+COPY ./src /app
 
+RUN chmod +x ./composer.phar \
+    && ./composer.phar install --no-suggest
+
+RUN ./vendor/bin/phpunit --coverage-text
+
+RUN echo 'APP_ENV=local' > .env \
+    && php artisan optimize \
+    && php artisan config:clear
+
+EXPOSE 80
+
+ENTRYPOINT ["sh", "-c"]
+
+CMD ["php artisan serve --host=0.0.0.0 --port=80"]
