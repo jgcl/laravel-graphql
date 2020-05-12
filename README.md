@@ -15,6 +15,7 @@ Plugins:
 ```bash
 docker-compose pull
 docker-compose up -d
+docker exec -it app php artisan config:clear
 docker exec -it app php artisan migrate
 ```
 
