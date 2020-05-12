@@ -45,7 +45,6 @@ services:
       - CACHE_DRIVER=database
     links:
       - mysql:db
-      - redis:redis
     ports:
       - 80:80
     network_mode: "bridge"

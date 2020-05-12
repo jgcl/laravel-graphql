@@ -1,6 +1,11 @@
-# Docker, PHP 7.4, PHPCS, PHPStan, GraphQL and MySQL
+# Laravel 7, GraphQL, Docker, PHP 7.4, PHPCS, PHPStan e MySQL 8
 
-Simples projeto usando Docker com PHP 7.4, uma API com GraphQL e MySQL, PHPCS/PHPStan para lint e code coverage de 100%.  
+[![dockeri.co](https://dockeri.co/image/jgcl88/laravel-graphql)](https://hub.docker.com/r/jgcl88/laravel-graphql)
+
+[![](https://raw.githubusercontent.com/play-with-docker/stacks/cff22438cb4195ace27f9b15784bbb497047afa7/assets/images/button.png)](http://play-with-docker.com/?stack=https://raw.githubusercontent.com/jgcl/laravel-graphql/master/docker-compose.yml "Test Online in play with docker")
+[![](https://images.microbadger.com/badges/image/jgcl88/laravel-graphql.svg)](https://microbadger.com/images/jgcl88/laravel-graphql "Get your own image badge on microbadger.com")
+
+Simples projeto usando Docker com PHP 7.4, uma API com GraphQL e MySQL, PHPCS/PHPStan para lint dentre outros.  
 
 Plugins:
 - GraphQL: https://github.com/rebing/graphql-laravel
