@@ -18,7 +18,7 @@ class MovementService
 
     public function withdraw(int $account, int $amount): Movement
     {
-        return Cache::lock("account_{$account}", 10)->block(5, function () use($account, $amount) {
+        return Cache::lock("account_{$account}", 10)->block(5, function () use ($account, $amount) {
             // Lock acquired after waiting maximum of 5 seconds...
             $lastMovement = $this->movementRepository->getLastMovement($account);
             if (empty($lastMovement)) {
@@ -39,7 +39,7 @@ class MovementService
 
     public function deposit(int $account, int $amount): Movement
     {
-        return Cache::lock("account_{$account}", 10)->block(5, function () use($account, $amount) {
+        return Cache::lock("account_{$account}", 10)->block(5, function () use ($account, $amount) {
             // Lock acquired after waiting maximum of 5 seconds...
             $requestMovement = new Movement();
             $requestMovement->account = $account;
@@ -50,7 +50,7 @@ class MovementService
 
     public function balance(int $account): Movement
     {
-        return Cache::lock("account_{$account}", 10)->block(5, function () use($account) {
+        return Cache::lock("account_{$account}", 10)->block(5, function () use ($account) {
             // Lock acquired after waiting maximum of 5 seconds...
             $movement = $this->movementRepository->getLastMovement($account);
 
